@@ -105,7 +105,7 @@ export class AuthService {
     clearTimeout(this.timer)
     this.clearAuthData();
     this.authStatusListener.next(false)
-    this.router.navigate(['/public'])
+    this.router.navigate(['/login'])
   }
 
   private getAuthData() {

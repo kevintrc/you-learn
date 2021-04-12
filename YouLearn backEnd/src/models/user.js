@@ -64,6 +64,12 @@ userSchema.pre("save", async function (next) {
     }
 });
 
+userSchema.virtual("notes", {
+    ref: "note",
+    localField: "_id",
+    foreignField: "owner"
+});
+
 const User = mongoose.model("user", userSchema);
 
 module.exports = User;

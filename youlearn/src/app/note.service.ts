@@ -69,6 +69,10 @@ export class NoteService {
         })
       )
   }
+  getUserNotes() {
+    return this.http
+      .get<Note[]>("http://localhost:3000/usernotes")
+  }
 
   getVideo(id: number) {
     return this.videoData[id]

@@ -9,6 +9,7 @@ import { Note } from '../note.model';
 export class NoteItemComponent implements OnInit {
   @Input() video: Note;
   @Input() index: number;
+  @Input() isPublic: boolean;
   constructor() { }
   ngOnInit(): void {
   }

@@ -8,6 +8,7 @@ import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { PublicComponent } from "./public/public.component";
 import { SearcherComponent } from "./searcher/searcher.component";
+import { UsernotesComponent } from "./usernotes/usernotes.component";
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/public', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
     { path: 'public', component: PublicComponent },
     { path: 'search', component: SearcherComponent, canActivate: [AuthGaurd] },
     { path: 'new/:id', component: EditComponent, canActivate: [AuthGaurd, EditGuard] },
+    { path: 'usernotes', component: UsernotesComponent, canActivate: [AuthGaurd] },
     { path: 'not-found', component: NotFoundComponent },
     { path: '**', redirectTo: '/not-found' }
 ]

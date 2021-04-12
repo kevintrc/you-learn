@@ -1,7 +1,7 @@
 <div class="container" *ngFor="let video of videos; let i = index">
   <div class="row justify-content-center">
     <app-note-item
-      [isPublic]="true"
+      [isPublic]="false"
       style="margin: 20px"
       [video]="videos[i]"
       [index]="i"

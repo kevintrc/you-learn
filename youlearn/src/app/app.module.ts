@@ -17,6 +17,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchItemComponent } from './search-item/search-item.component';
 import { SafePipe } from './safe.pipe';
 import { NoteItemComponent } from './note-item/note-item.component';
+import { UsernotesComponent } from './usernotes/usernotes.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NoteItemComponent } from './note-item/note-item.component';
     NotFoundComponent,
     SearchItemComponent,
     SafePipe,
-    NoteItemComponent
+    NoteItemComponent,
+    UsernotesComponent
   ],
   imports: [
     AppRoutingModule,

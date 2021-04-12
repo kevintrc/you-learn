@@ -3,28 +3,27 @@ import { Note } from '../note.model';
 import { NoteService } from '../note.service';
 
 @Component({
-  selector: 'app-public',
-  templateUrl: './public.component.html',
-  styleUrls: ['./public.component.css']
+  selector: 'app-usernotes',
+  templateUrl: './usernotes.component.html',
+  styleUrls: ['./usernotes.component.css']
 })
-export class PublicComponent implements OnInit {
- 
+export class UsernotesComponent implements OnInit {
+
   videos: Note[]
   isLoading = false;
 
   constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {
-    this.videos = this.noteService.publicData;
-    this.getPublic()
+    this.getNotes()
   }
-  getPublic() {
-    this.isLoading = true;
 
-    this.noteService.fetchPublic().subscribe(
+  getNotes() {
+    this.isLoading = true;
+    this.noteService.getUserNotes().subscribe(
       (resData) => {
         console.log(resData);
-        this.videos = this.noteService.publicData
+        this.videos = resData;
         this.isLoading = false
       },
       (errorData) => {
@@ -33,6 +32,4 @@ export class PublicComponent implements OnInit {
       }
     )
   }
-
-
 }
