@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
+      <div class="alert alert-danger" id="errBox" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <form
+        class="card-body row no-gutters align-items-center"
+        [formGroup]="searchForm"
+        (ngSubmit)="search(0)"
+      >
+        <div class="col">
+          <input
+            class="form-control form-control-lg form-control-borderless"
+            type="search"
+            placeholder="Search videos"
+            formControlName="term"
+          />
+        </div>
+        <div class="col-auto">
+          <button
+            class="btn btn-lg btn-success"
+            type="submit"
+            [disabled]="!searchForm.valid"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div
+    class="row justify-content-center"
+    style="margin: 40px 0"
+    *ngIf="isLoading"
+  >
+    <div class="lds-default">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="container"
+  *ngFor="let video of videos; let i = index; let even = even"
+>
+  <div class="row justify-content-around" *ngIf="even">
+    <app-search-item
+      [video]="videos[i]"
+      [index]="i"
+      class="col-sm-5 col-9"
+    ></app-search-item>
+    <app-search-item
+      [video]="videos[i + 1]"
+      [index]="i + 1"
+      class="col-sm-5 col-9"
+    ></app-search-item>
+  </div>
+</div>
+
+<div class="row">
+  <nav class="mx-auto">
+    <ul class="pagination">
+      <li
+        class="page-item"
+        style="cursor: pointer"
+        [ngClass]="{ disabled: !prevPageToken }"
+        (click)="search(-1)"
+      >
+        <a class="page-link" tabindex="-1">Previous</a>
+      </li>
+      <li
+        class="page-item"
+        style="cursor: pointer"
+        [ngClass]="{ disabled: !nextPageToken }"
+        (click)="search(1)"
+      >
+        <a class="page-link">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>

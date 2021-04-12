@@ -1,0 +1,59 @@
+<nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+  <span class="navbar-brand" style="color: aquamarine">YouLearn</span>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/public" routerLinkActive="active"
+        >Public Notes</a
+      >
+    </li>
+  </ul>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active"
+          *ngIf="!isAuthenticated"
+          >Login</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/search"
+          routerLinkActive="active"
+          *ngIf="isAuthenticated"
+          >Search</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active"
+          *ngIf="isAuthenticated"
+          >My Notes</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          (click)="onLogout()"
+          routerLinkActive="active"
+          *ngIf="isAuthenticated"
+          >Logout</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>

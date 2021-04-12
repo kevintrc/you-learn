@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-11 col-md-8 col-lg-5 mx-auto">
+      <div class="alert alert-danger" id="errBox" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+      <div class="card card-signin my-5">
+        <app-spinner *ngIf="isLoading; else notLoading"></app-spinner>
+        <ng-template #notLoading>
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              {{ isLogin ? "Log In" : "Sign Up" }}
+            </h5>
+            <form
+              class="form-signin"
+              [formGroup]="authForm"
+              (ngSubmit)="onSubmitAuth()"
+            >
+              <span
+                *ngIf="
+                  !authForm.get('email').valid && authForm.get('email').touched
+                "
+                style="color: white"
+                >Please Enter a valid email</span
+              >
+              <div class="form-label-group">
+                <input
+                  type="email"
+                  id="inputEmail"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="Email address"
+                  style="height: 60px; padding-left: 20px"
+                />
+                <label for="inputEmail">Email</label>
+              </div>
+              <span
+                *ngIf="
+                  !authForm.get('password').valid &&
+                  authForm.get('password').touched
+                "
+                style="color: white"
+                >Please Enter a valid password</span
+              >
+              <div class="form-label-group">
+                <input
+                  type="password"
+                  id="inputPassword"
+                  class="form-control"
+                  formControlName="password"
+                  placeholder="Password"
+                  style="height: 60px; padding-left: 20px"
+                />
+                <label for="inputPassword">Password</label>
+              </div>
+              <button
+                class="btn btn-lg btn-primary btn-block text-uppercase"
+                type="submit"
+                [disabled]="!authForm.valid"
+              >
+                {{ isLogin ? "Log In" : "Sign Up" }}
+              </button>
+              <hr class="my-4" />
+              <button
+                class="btn btn-lg btn-google btn-block text-uppercase"
+                type="button"
+                (click)="this.isLogin = !this.isLogin"
+              >
+                Switch to {{ isLogin ? "Sign Up" : "Log In" }}
+              </button>
+            </form>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

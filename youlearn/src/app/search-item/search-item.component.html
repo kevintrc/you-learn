@@ -1,0 +1,17 @@
+<a style="cursor: pointer" [routerLink]="['/new', index]">
+  <div class="card p-1">
+    <div class="row no-gutters">
+      <div class="col-lg-4">
+        <img [src]="video.imgPath" class="img-fluid card-img-top" />
+      </div>
+      <div class="col-lg-8">
+        <div class="card-block px-2">
+          <h6 class="card-title" style="margin: 0">
+            {{ video.title | shorten: 30 }}
+          </h6>
+          <p class="card-text">{{ video.channelTitle }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,42 @@
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row custMargin">
+      <div class="col-lg-8" style="margin-bottom: 30px">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe
+            *ngIf="this.video"
+            class="embed-responsive-item"
+            [src]="link | safe"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-12" style="padding: 0 5px 0 0">
+              <textarea class="heightAdjust" formControlName="note"></textarea>
+            </div>
+            <div
+              class="col-md-6 col-lg-12"
+              style="padding: 0 0 0 5px; float: bottom"
+            >
+              <div class="custom-control custom-switch">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="public"
+                  formControlName="public"
+                />
+                <label class="custom-control-label" for="public">Public</label>
+              </div>
+              <button type="submit" class="btn btn-success" style="width: 100%">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
